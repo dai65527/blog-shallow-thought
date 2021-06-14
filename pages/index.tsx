@@ -1,5 +1,7 @@
+import Link from "next/link"
 import { GetStaticProps } from "next"
 import { getSortedPostsData, Post } from "../libs/posts";
+import { utcStringToDateString } from "../libs/dates";
 
 // export async function getStaticProps() {
 export const getStaticProps: GetStaticProps = async () => {
@@ -26,8 +28,12 @@ export default function Home({
         <ul>
           {allPostsData.map((post) => (
             <li>
-              <h3>{post.title}</h3>
-              <p>{post.date}</p>
+              <Link href={`/posts/${post.id}`}>
+                <a>
+                  <h3>{post.title}</h3>
+                  <p>{utcStringToDateString(post.date)}</p>
+                </a>
+              </Link>
             </li>
           ))}
         </ul>

@@ -9,17 +9,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </Head>
 
       <header>
-        <h1>Welcome to My Site</h1>
+        <h1>Shallow Thoughts</h1>
         <p>
-          Hi, my name is Daiki Nakano. I'm a student at 42tokyo learning
-          software engineering.
+          dnakanoの最も気軽な備忘録です。
         </p>
       </header>
 
       <main>{children}</main>
 
       <footer>
-        footer
+        <hr/>
+        <p>&copy; 2021 Daiki Nakano</p>
       </footer>
     </>
   );

@@ -1,15 +1,12 @@
-import Head from "next/head";
 import { Post, getPostData, getAllPostIds } from "../../libs/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { utcStringToDateString } from "../../libs/dates"
 
 export default function PostArticle({ postData }: {postData: Post}) {
-  const date = new Date(postData.date)
-  const dateString = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
-
   return (
     <>
       <h1>{postData.title}</h1>
-      <h3>{dateString}</h3>
+      <h3>{utcStringToDateString(postData.date)}</h3>
       <div dangerouslySetInnerHTML={{ __html: postData.contentHtml}} />
     </>
   )
