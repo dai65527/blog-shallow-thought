@@ -1,6 +1,5 @@
 import { GetStaticProps } from "next"
-import { Props } from "react";
-import { getSortedPostsData, Posts } from "../libs/posts";
+import { getSortedPostsData, Post } from "../libs/posts";
 
 // export async function getStaticProps() {
 export const getStaticProps: GetStaticProps = async () => {
@@ -17,13 +16,12 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Home({
   allPostsData,
 }: {
-  allPostsData: Posts[];
-  // allPostsData: { date: string; title: string; id: string }[];
+  allPostsData: Post[];
 }) {
   console.log(allPostsData)
   return (
     <>
-      <h1>HOGE FUGA</h1>
+      <h1>記事一覧</h1>
       <section>
         <ul>
           {allPostsData.map((post) => (
