@@ -49,7 +49,7 @@ export class PostAPIRepository implements PostRepository {
         title: content.title,
         contentHtml: content.body,
         createdAt: content.publishedAt,
-        updatedAt: content.updatedAt,
+        updatedAt: content.revisedAt,
         categories: content.category.map((cat) => {
           return {
             id: cat.id,
