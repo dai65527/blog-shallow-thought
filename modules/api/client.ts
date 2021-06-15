@@ -1,4 +1,4 @@
-import { createClient, MicroCMSClient } from "microcms-js-sdk";
+import { createClient } from "microcms-js-sdk";
 import { APIConfig } from "./config"
 
 export default class APIClient {
