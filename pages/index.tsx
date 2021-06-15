@@ -1,12 +1,17 @@
-import Link from "next/link"
-import { GetStaticProps } from "next"
-import { getSortedPostsData, Post } from "../libs/posts";
+import Link from "next/link";
+import { GetStaticProps } from "next";
+
 import { utcStringToDateString } from "../libs/dates";
+import PostRepository from "../modules/post/repository";
+import { PostAPIRepository } from "../modules/api/post";
+import { Post } from "../modules/post/model";
 
 // export async function getStaticProps() {
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData()
-  console.log(allPostsData)
+  const repo: PostRepository = new PostAPIRepository();
+  const allPostsData = await repo.fetchAllPosts();
+
+  console.log(allPostsData);
   return {
     props: {
       allPostsData,
@@ -15,15 +20,11 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 // export default function Home({allPostsData}:Props) {
-export default function Home({
-  allPostsData,
-}: {
-  allPostsData: Post[];
-}) {
-  console.log(allPostsData)
+export default function Home({ allPostsData }: { allPostsData: Post[] }) {
+  console.log(allPostsData);
   return (
     <>
-      <h1>記事一覧</h1>
+      <h1>Posts</h1>
       <section>
         <ul>
           {allPostsData.map((post) => (
@@ -31,7 +32,7 @@ export default function Home({
               <Link href={`/posts/${post.id}`}>
                 <a>
                   <h3>{post.title}</h3>
-                  <p>{utcStringToDateString(post.date)}</p>
+                  <p>{utcStringToDateString(post.createdAt)}</p>
                 </a>
               </Link>
             </li>

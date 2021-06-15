@@ -4,7 +4,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Head>
-        <title>Shallow Thoughts</title>
+        <title>Shallow Thought</title>
         <link rel="icon" href="favicon.ico" />
       </Head>
 
@@ -15,10 +15,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </p>
       </header>
 
+      <hr/>
+
       <main>{children}</main>
 
+      <hr/>
+
       <footer>
-        <hr/>
         <p>&copy; 2021 Daiki Nakano</p>
       </footer>
     </>
