@@ -1,6 +1,6 @@
-import PostRepository from "../post/repository";
+import PostRepository from "../repository/post";
 import { createClient } from "microcms-js-sdk";
-import { Post } from "../post/model";
+import { Post } from "../entity/post";
 import { APIConfig } from "./config";
 import { APIResponseList } from "./types";
 import { CategoryAPIResponse } from "./category";

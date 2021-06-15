@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { utcStringToDateString } from "../../libs/dates"
 import { PostAPIRepository } from "../../modules/api/post";
-import { Post } from "../../modules/post/model";
+import { Post } from "../../modules/entity/post";
 
 export default function PostArticle({ postData }: {postData: Post}) {
   return (
@@ -34,7 +34,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const repo = new PostAPIRepository()
   const postData = await repo.fetchPostById(params.id as string)
-  console.log(postData)
   return {
     props: {
       postData,

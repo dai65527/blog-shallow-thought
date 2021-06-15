@@ -1,4 +1,4 @@
-import { Post } from "./model"
+import { Post } from "../entity/post"
 
 export default interface PostRepository {
   fetchAllPosts(): Promise<Post[]>

@@ -1,4 +1,4 @@
-import { Category } from "../category/model";
+import { Category } from "./category";
 import { DateString } from "../utils/time"
 
 export type Post = {

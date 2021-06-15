@@ -2,16 +2,15 @@ import Link from "next/link";
 import { GetStaticProps } from "next";
 
 import { utcStringToDateString } from "../libs/dates";
-import PostRepository from "../modules/post/repository";
+import PostRepository from "../modules/repository/post";
 import { PostAPIRepository } from "../modules/api/post";
-import { Post } from "../modules/post/model";
+import { Post } from "../modules/entity/post";
 
 // export async function getStaticProps() {
 export const getStaticProps: GetStaticProps = async () => {
   const repo: PostRepository = new PostAPIRepository();
   const allPostsData = await repo.fetchAllPosts();
 
-  console.log(allPostsData);
   return {
     props: {
       allPostsData,
@@ -21,7 +20,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
 // export default function Home({allPostsData}:Props) {
 export default function Home({ allPostsData }: { allPostsData: Post[] }) {
-  console.log(allPostsData);
   return (
     <>
       <h1>Posts</h1>
