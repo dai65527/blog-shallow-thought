@@ -6,6 +6,7 @@ import PostRepository from "../modules/repository/post";
 import { PostAPIRepository } from "../modules/api/post";
 import { Post } from "../modules/entity/post";
 import CategoryLink from "../components/CategoryLink"
+import DateInfo from "../components/DateInfo";
 
 export const getStaticProps: GetStaticProps = async () => {
   const repo: PostRepository = new PostAPIRepository();
@@ -36,10 +37,7 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
                   <CategoryLink category={category} />
                 ))}
               </div>
-              <div className="flex flex-row text-sm">
-                <p className="">{`created:${utcStringToDateString(post.createdAt)}`}</p>
-                <p className="ml-1">{`updated:${utcStringToDateString(post.updatedAt)}`}</p>
-              </div>
+              <DateInfo createdAt={post.createdAt} updatedAt={post.updatedAt} />
             </li>
           ))}
         </ul>
