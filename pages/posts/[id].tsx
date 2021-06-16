@@ -5,7 +5,7 @@ import { PostAPIRepository } from "../../modules/api/post";
 import { Post } from "../../modules/entity/post";
 import CategoryLink from "../../components/CategoryLink";
 import DateInfo from "../../components/DateInfo";
-import "highlight.js/styles/base16/Material.css";
+import "highlight.js/styles/base16/monokai.css";
 import "tailwindcss/tailwind.css";
 
 export default function PostArticle({ postData }: { postData: Post }) {
