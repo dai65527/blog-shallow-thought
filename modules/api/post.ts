@@ -4,7 +4,6 @@ import { Post } from "../entity/post";
 import { APIConfig } from "./config";
 import { APIResponseList } from "./types";
 import { CategoryAPIResponse } from "./category";
-import { stringify } from "remark";
 
 export type PostAPIResponse = {
   id: string;
@@ -33,7 +32,7 @@ export class PostAPIRepository implements PostRepository {
     });
     const totalCount = preRes.totalCount;
 
-    // get number of posts
+    // get all posts data
     const res = await client.get<APIResponseList<PostAPIResponse>>({
       endpoint: "post",
       queries: {
