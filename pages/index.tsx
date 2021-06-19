@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { GetStaticProps } from "next";
 
-import { utcStringToDateString } from "../libs/dates";
 import PostRepository from "../modules/repository/post";
 import { PostAPIRepository } from "../modules/api/post";
 import { Post } from "../modules/entity/post";
-import CategoryLink from "../components/CategoryLink"
+import CategoryLink from "../components/CategoryLink";
 import DateInfo from "../components/DateInfo";
+import IndexTitle from "../layouts/IndexTitle";
 
 export const getStaticProps: GetStaticProps = async () => {
   const repo: PostRepository = new PostAPIRepository();
@@ -22,7 +22,7 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Home({ allPostsData }: { allPostsData: Post[] }) {
   return (
     <>
-      <h1 className="my-5 text-md font-medium">Recent Posts</h1>
+      <IndexTitle>Recent Posts</IndexTitle>
       <section>
         <ul>
           {allPostsData.map((post) => (
@@ -33,7 +33,7 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
                 </a>
               </Link>
               <div className="flex flex-row mt-2">
-                {post.categories.map(category => (
+                {post.categories.map((category) => (
                   <CategoryLink category={category} />
                 ))}
               </div>
