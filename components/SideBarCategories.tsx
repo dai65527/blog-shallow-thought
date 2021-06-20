@@ -1,9 +1,5 @@
-import { GetStaticProps } from "next";
 import Link from "next/dist/client/link";
 
-import CategoryAPIRepository from "../modules/api/category";
-import PostAPIRepository from "../modules/api/post";
-import CategoryService from "../modules/service/category";
 import { Category } from "../modules/entity/category";
 import { WithCount } from "../modules/utils/type";
 
