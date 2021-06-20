@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
+
+import SiteHeader from "../components/SiteHeader";
 import "tailwindcss/tailwind.css";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -10,18 +12,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <link rel="icon" href="favicon.ico" />
       </Head>
 
-      <header>
-        <div className="mx-auto my-10 max-w-screen-md xl:max-w-screen-lg px-3">
-          <Link href="/">
-            <a>
-              <h1 className="my-3 text-4xl">Shallow Thought</h1>
-            </a>
-          </Link>
-          <p className="">dnakanoの最も気軽な技術メモ・備忘録です。</p>
-        </div>
-      </header>
-
-      <hr />
+      <SiteHeader />
 
       <main className="grid grid-cols-12 mx-auto max-w-screen-md xl:max-w-screen-lg px-3 py-5">
         <article className="col-span-9">{children}</article>
