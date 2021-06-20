@@ -2,9 +2,19 @@ import Head from "next/head";
 import Link from "next/link";
 
 import SiteHeader from "../components/SiteHeader";
+import SideBarProfile from "../components/SideBarProfile";
 import "tailwindcss/tailwind.css";
+import SideBarCategories from "../components/SideBarCategories";
+import { Category } from "../modules/entity/category";
+import { WithCount } from "../modules/utils/type";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({
+  children,
+  allCategoriesData,
+}: {
+  children: React.ReactNode;
+  allCategoriesData: WithCount<Category>[];
+}) {
   return (
     <>
       <Head>
@@ -15,10 +25,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <SiteHeader />
 
       <main className="grid grid-cols-12 mx-auto max-w-screen-md xl:max-w-screen-lg px-3 py-5">
-        <article className="col-span-9">{children}</article>
-        <aside className="col-span-3">
-          <p>Profile</p>
-          <p>Categories</p>
+        <article className="col-span-12 sm:col-span-9">{children}</article>
+        <aside className="col-span-12 sm:col-span-3 sm:mt-16 sm:pl-3">
+          <SideBarProfile />
+          <SideBarCategories allCategoriesData={allCategoriesData} />
         </aside>
       </main>
 

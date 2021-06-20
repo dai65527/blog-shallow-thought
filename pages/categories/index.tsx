@@ -29,7 +29,7 @@ export default function CategoriesIndex({
 }) {
   return (
     <>
-      <IndexTitle>All Categories</IndexTitle>
+      <IndexTitle>Categories</IndexTitle>
       <section>
         <ul>{allCategoriesData.map((category) => (
           <li className="list-disc list-inside my-1">
