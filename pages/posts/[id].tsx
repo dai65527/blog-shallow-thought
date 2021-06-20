@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import cheerio from "cheerio";
 import hljs from "highlight.js";
-import { PostAPIRepository } from "../../modules/api/post";
+import PostAPIRepository from "../../modules/api/post";
 import { Post } from "../../modules/entity/post";
 import CategoryLink from "../../components/CategoryLink";
 import DateInfo from "../../components/DateInfo";

@@ -1,8 +1,8 @@
 import { GetStaticProps } from "next";
 
 import IndexTitle from "../../layouts/IndexTitle";
-import { CategoryApiRepository } from "../../modules/api/category";
-import { PostAPIRepository } from "../../modules/api/post";
+import CategoryAPIRepository from "../../modules/api/category";
+import PostAPIRepository from "../../modules/api/post";
 import CategoryService from "../../modules/service/category";
 import { WithCount } from "../../modules/utils/type";
 import { Category } from "../../modules/entity/category";
@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export const getStaticProps: GetStaticProps = async () => {
   const categoryService = new CategoryService(
-    new CategoryApiRepository(),
+    new CategoryAPIRepository(),
     new PostAPIRepository(),
   );
   const allCategoriesData = await categoryService.getAllCategoriesWithCount();

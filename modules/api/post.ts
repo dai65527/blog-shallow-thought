@@ -16,7 +16,7 @@ export type PostAPIResponse = {
   category: CategoryAPIResponse[];
 };
 
-export class PostAPIRepository implements PostRepository {
+export default class PostAPIRepository implements PostRepository {
   async fetchAllPosts(): Promise<Post[]> {
     const client = createClient({
       serviceDomain: APIConfig.microCMSServiceDomain,

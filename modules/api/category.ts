@@ -14,7 +14,7 @@ export type CategoryAPIResponse = {
   name: string;
 };
 
-export class CategoryApiRepository implements CategoryRepository {
+export default class CategoryAPIRepository implements CategoryRepository {
   async fetchAllCategories(): Promise<Category[]> {
     const client = createClient({
       serviceDomain: APIConfig.microCMSServiceDomain,

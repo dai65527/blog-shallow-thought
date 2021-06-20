@@ -30,21 +30,27 @@ export default class CategoryService {
   async getAllCategoriesWithCount(): Promise<WithCount<Category>[]> {
     const posts = await this.postRepo.fetchAllPosts();
     const categories = await this.getAllCategories();
-    const categoriesWithCount: WithCount<Category>[] = categories.map(category => {
-      var count = 0;
-      for (const post of posts) {
-        for (const postCategory of post.categories) {
-          if (postCategory.id == category.id) {
-            count++;
-            break;
+    const categoriesWithCount: WithCount<Category>[] = categories.map(
+      (category) => {
+        var count = 0;
+        for (const post of posts) {
+          for (const postCategory of post.categories) {
+            if (postCategory.id == category.id) {
+              count++;
+              break;
+            }
           }
         }
-      }
-      return {
-        ...category,
-        count,
-      }
-    })
+        return {
+          ...category,
+          count,
+        };
+      },
+    );
     return categoriesWithCount;
+  }
+
+  async getCategoryById(id: string): Promise<Category> {
+    return this.categoryRepo.fetchCategoryById(id);
   }
 }
