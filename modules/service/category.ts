@@ -30,7 +30,6 @@ export default class CategoryService {
   async getAllCategoriesWithCount(): Promise<WithCount<Category>[]> {
     const posts = await this.postRepo.fetchAllPosts();
     const categories = await this.getAllCategories();
-    console.log(categories);
     const categoriesWithCount: WithCount<Category>[] = categories.map(category => {
       var count = 0;
       for (const post of posts) {
