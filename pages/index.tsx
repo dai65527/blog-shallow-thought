@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { GetStaticProps } from "next";
 
 import PostRepository from "../modules/repository/post";

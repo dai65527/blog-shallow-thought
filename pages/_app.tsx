@@ -18,7 +18,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 MyApp.getInitialProps = async (appContext) => {
   const appProps = await App.getInitialProps(appContext);
 
-  // 全カテゴリーのデータを取得して、サイドバーのレンダリングに使いたい
   const categoryService = new CategoryService(
     new CategoryAPIRepository(),
     new PostAPIRepository(),
