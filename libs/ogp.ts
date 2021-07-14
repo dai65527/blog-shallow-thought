@@ -1,4 +1,4 @@
-import { Canvas, createCanvas } from "canvas";
+import { Canvas, createCanvas, registerFont } from "canvas";
 import path from "path";
 import fs from "fs";
 
@@ -50,13 +50,17 @@ export function createOgpImage(pageId: string, text: string): string {
   ctx.fillStyle = "#FFF";
   ctx.fillRect(DX, DY, WIDTH, HEIGHT);
 
-  ctx.font = "40px sans-selif";
+  registerFont(path.resolve("./fonts/ipaexg.ttf"), {
+    family: "ipaexg",
+  });
+
+  ctx.font = "40px ipaexg";
   ctx.fillStyle = "#000000";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   ctx.fillText("Shallow Thought", 600, 550)
 
-  ctx.font = "60px sans-selif";
+  ctx.font = "60px ipaexg";
   const lines = createTextLines(canvas, text);
   lines.forEach((line, index) => {
     const y = 280 + 80 * (index - (lines.length - 1) / 2);
