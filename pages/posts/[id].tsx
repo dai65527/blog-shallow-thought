@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import cheerio from "cheerio";
 import hljs from "highlight.js";
@@ -7,10 +8,18 @@ import CategoryLink from "../../components/CategoryLink";
 import DateInfo from "../../components/DateInfo";
 import "highlight.js/styles/base16/monokai.css";
 import "tailwindcss/tailwind.css";
+import { createOgpImage } from "../../libs/ogp";
 
 export default function PostArticle({ postData }: { postData: Post }) {
   return (
     <>
+      <Head>
+        <meta property="og:title" content={postData.title}></meta>
+        <meta property="og:type" content="article"></meta>
+        <meta property="og:url" content={`/post/${postData.id}`}></meta>
+        <meta property="og:image" content={`/ogp/${postData.id}.png`}></meta>
+      </Head>
+
       <div className="my-5">
         <h1 className="text-2xl font-bold my-5">{postData.title}</h1>
         <div className="flex flex-row my-1">
@@ -55,6 +64,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const repo = new PostAPIRepository();
   const postData = await repo.fetchPostById(params.id as string);
+
+  // get ogp image
+  createOgpImage(params.id as string, postData.title);
 
   // add syntax highlight to post html
   // https://blog.microcms.io/syntax-highlighting-on-server-side/
